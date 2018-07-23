@@ -1,0 +1,9 @@
+<ul class="navbar-nav navbar-sidenav" id="sidemenu">
+  <% @menu.each do |item| %>
+    <% if item.menu.present? %>
+      <%= render 'submenu', locals:{icon:'cogs', title: t('menu.settings')} do %>
+    <% else %>
+      <%= render 'item' %>
+    <% end %>
+  <% end %>
+</ul>

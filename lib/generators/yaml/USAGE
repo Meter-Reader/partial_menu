@@ -1,0 +1,8 @@
+Description:
+    Generates an example menu description yaml file for config/menu.yaml
+
+Example:
+    rails generate partialmenu:yaml
+
+    This will create:
+        config/menu.yaml

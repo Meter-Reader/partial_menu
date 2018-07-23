@@ -1,0 +1,11 @@
+menu:
+  - first_item: link
+      title: First item
+      uri: root_path
+  - second_item: separator
+  - third_item: submenu
+      menu:
+        - first_submenu: link
+        - second_submenu: link
+            title: menu.second_submenu.title
+            uri: second_path

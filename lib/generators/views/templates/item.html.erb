@@ -1,8 +1,5 @@
-<li class="nav-item <%= current_menu?(url)%>" data-toggle="tooltip" data-placement="right" title="" data-original-title="<%= title %>">
-  <%= link_to url, class:'nav-link' do %>
-  <% if icon.present? %>
-    <i class="fa fa-fw fa-<%= icon %>"></i>
-  <% end %>
-    <span class="nav-link-text"><%= title %></span>
-  <% end %>
+<li <%= current_menu?(url)%>>
+  <%= link_to url do -%>
+    <%= title %>
+  <% end -%>
 </li>

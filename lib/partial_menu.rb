@@ -1,6 +1,9 @@
-require 'partial_menu/railtie' if defined?(Rails)
-
 # PartailMenu implementation class
 module PartialMenu
-  # Your code goes here...
+end
+
+if defined?(Rails::Railtie)
+  require 'partial_menu/railtie'
+elsif defined?(Rails::Initializer)
+  raise 'partial_menu is not compatible with Rails 2.3 or older'
 end

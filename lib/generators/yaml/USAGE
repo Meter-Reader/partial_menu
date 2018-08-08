@@ -1,8 +1,15 @@
 Description:
-    Generates an example menu description yaml file for config/menu.yaml
+    Generates an example menu description yaml file for config/main_menu.yaml
+    You can have multiple menu definitiions in an app. For this you can use
+    the '--type' parameter to set the name of the file
 
-Example:
-    rails generate partialmenu:yaml
+Examples:
+    rails generate partial_menu:yaml
 
     This will create:
-        config/menu.yaml
+        config/main_menu.yaml
+
+    rails generate partial_menu:yaml -t side
+
+    This will create:
+        config/side_menu.yaml

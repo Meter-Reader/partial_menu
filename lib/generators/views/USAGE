@@ -1,0 +1,20 @@
+Description:
+    Generates the example partial erb templates in /app/views/main_menu/.
+    You can customize the folder by providing the '--partial_dir' or '-d' option
+
+Examples:
+    rails generate partial_menu:views
+
+    This will create:
+        app/views/main_menu/_mneu.html.erb         -- menu root template
+        app/views/main_menu/_item.html.erb         -- menu items template
+        app/views/main_menu/_submenu_item.html.erb -- submenu root template
+        app/views/main_menu/_item.html.erb         -- submenu items template
+
+    rails generate partial_menu:views -d side
+
+    This will create:
+        app/views/side_menu/_menu.html.erb         -- menu root template
+        app/views/side_menu/_item.html.erb         -- menu items template
+        app/views/side_menu/_submenu_item.html.erb -- submenu root template
+        app/views/side_menu/_item.html.erb         -- submenu items template

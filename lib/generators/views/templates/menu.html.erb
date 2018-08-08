@@ -1,9 +1,0 @@
-<ul>
-  <% @menu.each do |item| %>
-    <% if item.menu.present? %>
-      <%= render 'submenu' %>
-    <% else %>
-      <%= render 'item' %>
-    <% end %>
-  <% end %>
-</ul>

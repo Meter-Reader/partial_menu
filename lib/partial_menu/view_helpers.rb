@@ -1,3 +1,5 @@
+require 'partial_menu/menu'
+
 module PartialMenu
   # = PartialMenu view helpers
   #
@@ -13,10 +15,10 @@ module PartialMenu
   #   <%= partial_menu %>
   #
   # ... will result in <tt>menu.yaml</tt> getting displayed using partials
-  # from +app/views/artial_menu+:
+  # from +app/views/partial_menu+:
   #
   #  <ul>
-  #    <li><s href="/">First item</a></li>
+  #    <li><a href="/">First item</a></li>
   #    ...
   #  </ul>
   #
@@ -33,23 +35,26 @@ module PartialMenu
   #   <%= partial_menu {menu_id:'sidemenu'} %>
   #
   module ViewHelpers
-    def partial_menu(type = '', options = {}) #:nodoc:
+    def partial_menu(type = 'main', options = {}) #:nodoc:
       if type.is_a? Hash
         options = type
-        type = nil
+        type = 'main'
       end
-      layout = options.delete('layout') || 'menu'
-      options.symbolize_keys
-      options[:menu] = load_menu_from_yaml(type)
-      render layout: layout, locals: options
+      options[:menu] = PartialMenu::Menu.new(load_menu_from_yaml(type))
+      options.symbolize_keys!
+      render partial: "#{type}_menu/menu", locals: options
+    end
+
+    def current_menu?(path)
+      request.path == URI(path).path unless path.blank?
     end
 
     private
 
     def load_menu_from_yaml(type)
-      YAML.load_file(
-        Rails.root.join("config/#{type.concat('_')}menu.yml")
-      )
+      Psych.load_file(
+        Rails.root.join("config/#{type}_menu.yml")
+      ).deep_symbolize_keys[:menu]
     end
   end
 end

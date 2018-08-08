@@ -3,7 +3,7 @@ menu:
   - first_item:
     title: "First item"
     uri: root_path
-    icon: test
+    icon: fa-user
   - second_item: separator
   - third_item:
     menu:

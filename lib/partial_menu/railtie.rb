@@ -8,5 +8,10 @@ module PartialMenu
         PartialMenu::ViewHelpers
       end
     end
+
+    generators do
+      require 'generators/yaml/yaml_generator'
+      require 'generators/views/views_generator'
+    end
   end
 end

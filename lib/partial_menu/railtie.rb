@@ -4,8 +4,8 @@ module PartialMenu
   # Binding to Rails
   class Railtie < ::Rails::Railtie
     initializer 'partial_menu.view_helpers' do
-      ActiveSupport.on_load(:action_view) do
-        PartialMenu::ViewHelpers
+      ActiveSupport.on_load :action_view do
+        include PartialMenu::ViewHelpers
       end
     end
 

@@ -1,8 +1,7 @@
 require 'test_helper'
 
 module PartialMenu
-  include PartialMenu::VewHelpers
-
+  include PartialMenu::ViewHelpers
   class Test < ActionView::TestCase
     test 'PartialMenu is loaded as module' do
       assert_kind_of Module, PartialMenu

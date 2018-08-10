@@ -35,23 +35,45 @@ module PartialMenu
   #   <%= partial_menu {menu_id:'sidemenu'} %>
   #
   module ViewHelpers
+    # rubocop:disable Metrics/MethodLength
     def partial_menu(type = 'main', options = {}) #:nodoc:
+      unless (type.is_a? String) || (type.is_a? Hash)
+        raise ::ArgumentError, "Expected a String or Hash, got #{type.class}"
+      end
+      unless options.is_a? Hash
+        raise ::ArgumnetError, "Expected a Hash, got #{options.class}"
+      end
       if type.is_a? Hash
         options = type
         type = 'main'
       end
       options[:menu] = PartialMenu::Menu.new(load_menu_from_yaml(type))
-      options.symbolize_keys!
+      options.deep_symbolize_keys!
       render partial: "#{type}_menu/menu", locals: options
     end
-
-    def current_menu?(path)
-      request.path == URI(path).path unless path.blank?
-    end
+    # rubocop:enable Metrics/MethodLength
 
     private
 
+    ##
+    # Load yaml file from config
+    #
+    # The +type+ parameter is used to create te actual file name. It is
+    # expected to:
+    # * be in the Rails apps config/ folder
+    # * have a name like +type>_menu.yml+
+    #
+    # All keys are symbolized after loading hte file.
+    #
+    # @param [String] type The menu type, which identifies the file too
+    #
+    # @return [Hash] The parsed YAML as hash of objects
+    #
     def load_menu_from_yaml(type)
+      unless type.is_a? String
+        raise ::ArgumentError,
+              "Expected a String, got #{type.class}"
+      end
       Psych.load_file(
         Rails.root.join("config/#{type}_menu.yml")
       ).deep_symbolize_keys[:menu]

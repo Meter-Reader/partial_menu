@@ -1,12 +1,12 @@
-<li <%= 'class="active"' if current_menu?(item.uri)%>>
-  <% if item.try(:icon).present? %>
+<li<%= ' class="active"' if is_active_link?(item.uri, :inclusive) %>>
+  <% if item.try(:icon).present? -%>
     <i class="fa fa-fw <%= item.icon %>"></i>
-  <% end %>
-  <% if item.uri.present? %>
+  <% end -%>
+  <% if item.uri.present? -%>
     <%= link_to item.uri do -%>
       <%= item.title %>
     <% end -%>
-  <% else %>
+  <% else -%>
     <%= item.title %>
   <% end -%>
 </li>

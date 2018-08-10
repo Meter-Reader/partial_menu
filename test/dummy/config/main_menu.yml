@@ -7,7 +7,8 @@ menu:
   - second_item: separator
   - third_item:
     menu:
-    - first_submenu: link
+    - first_submenu:
+      uri: link
     - second_submenu:
       title: menu.second_submenu.title
       uri: second_path

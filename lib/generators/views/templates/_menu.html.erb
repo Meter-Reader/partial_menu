@@ -1,9 +1,9 @@
 <ul>
-  <% menu.items.each do |item| %>
-    <% if item.has_submenu? %>
-      <%= render "#{menu.type}_menu/submenu", menu: item.submenu %>
-    <% else %>
-      <%= render "#{menu.type}_menu/item", item: item %>
-    <% end %>
-  <% end %>
+  <% menu.items.each do |item| -%>
+    <% if item.submenu? -%>
+      <%= render "#{menu.type}_menu/submenu", menu: item.submenu -%>
+    <% else -%>
+      <%= render "#{menu.type}_menu/item", item: item -%>
+    <% end -%>
+  <% end -%>
 </ul>

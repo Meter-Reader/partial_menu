@@ -1,4 +1,4 @@
-<li <%= 'class="active"' if current_menu?(item.uri)%>>
+<li <%= 'class="active"' if is_active_link?(item.uri, :inclusive) %>>
   <% if item.try(:icon).present? %>
     <i class="fa fa-fw <%= item.icon %>"></i>
   <% end %>

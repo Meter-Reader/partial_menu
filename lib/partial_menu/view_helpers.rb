@@ -71,8 +71,7 @@ module PartialMenu
     #
     def load_menu_from_yaml(type)
       unless type.is_a? String
-        raise ::ArgumentError,
-              "Expected a String, got #{type.class}"
+        raise ::ArgumentError, "Expected a String, got #{type.class}"
       end
       Psych.load_file(
         Rails.root.join("config/#{type}_menu.yml")

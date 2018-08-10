@@ -16,8 +16,8 @@ module PartialMenu
       unless type.is_a? String
         raise ::ArgumentError, "Expected a String, got #{type.class}"
       end
-      unless parent.nil? || (parent.is_a? PartialMenu::Menu)
-        raise ::ArgumentError, "Expected a String, got #{type.class}"
+      unless parent.nil? || (parent.is_a? PartialMenu::MenuItem)
+        raise ::ArgumentError, "Expected MenuItem or nil, got #{parent.class}"
       end
       @type = type
       @items = []
@@ -31,8 +31,7 @@ module PartialMenu
 
     def add_items(items)
       unless items.is_a? Array
-        raise ::ArgumentError,
-              "Expected an Array, got #{items.class}"
+        raise ::ArgumentError, "Expected an Array, got #{items.class}"
       end
       items.each do |item|
         @items << PartialMenu::MenuItem.new(item, self)

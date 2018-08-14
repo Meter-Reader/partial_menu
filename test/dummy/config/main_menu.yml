@@ -2,10 +2,12 @@
 menu:
   - first_item:
     title: "First item"
-    uri: root_path
+    uri: :root
     icon: fa-user
   - second_item: separator
   - third_item:
+    icon: glyph-user
+    icontype: glyph
     menu:
     - first_submenu:
       uri: link

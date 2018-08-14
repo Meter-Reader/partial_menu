@@ -2,13 +2,14 @@
 menu:
   - first_item:
     title: "First item"
-    uri: root_path
-    icon: test
+    uri: :root
+    icon: fa-user
   - second_item: separator
   - third_item:
-    icontype: glyph
+    icon: test
     menu:
-    - first_submenu: link
+    - first_submenu:
+      uri: link
     - second_submenu:
       title: menu.second_submenu.title
       uri: second_path

@@ -1,12 +1,20 @@
 <li class="nav-item" title="<%= menu.parent.title %>" data-original-title="<%= menu.parent.title %>">
   <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-    href="#collapse<%= menu.id %>"  data-parent="#<%= menu.type %>">
+    href="#collapse<%= menu.id %>"  data-parent="#<%= menu.layout %>">
     <% if menu.parent.try(:icon).present? %>
-      <i class="fa fa-fw <%= menu.parent.icon %>"></i>
+      <i class="<%= menu.parent.try(:icontype) || 'fa'%> <%= menu.parent.try(:icontype) || 'fa'%>-fw <%= menu.parent.icon %>"></i>
     <% end -%>
     <span class="nav-link-text"><%= menu.parent.title %></span>
   </a>
+  <ul id="#<%= menu.layout %>">
   <% menu.items.each do |item| %>
-    <%= render "#{menu.type}_menu/submenu_item", item: item %>
+    <% if item.submenu? -%>
+      <%= render "#{menu.layout}_menu/submenu", menu: item.submenu -%>
+    <% elsif item.separator?%>
+      <%= render "#{menu.layout}_menu/separator", item: item -%>
+    <% else -%>
+      <%= render "#{menu.layout}_menu/submenu_item", item: item -%>
+    <% end -%>
   <% end %>
+  </ul>
 </li>

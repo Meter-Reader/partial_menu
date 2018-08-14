@@ -1,6 +1,6 @@
-<li<%= ' class="active"' if is_active_link?(item.uri, :inclusive) %>>
+<li class="<%= 'active' if is_active_link?(url_for(item.uri), :inclusive) %>">
   <% if item.try(:icon).present? -%>
-    <i class="fa fa-fw <%= item.icon %>"></i>
+    <i class="<%= item.try(:icontype) || 'fa' %> <%= item.try(:icontype) || 'fa'%>-fw <%= item.icon %>"></i>
   <% end -%>
   <% if item.uri.present? -%>
     <%= link_to item.uri do -%>

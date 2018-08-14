@@ -31,5 +31,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'overcommit', '~> 0.45'
   s.add_development_dependency 'rails_best_practices', '~> 1.19'
   s.add_development_dependency 'rubocop', '~> 0.58'
+  s.add_development_dependency 'simplecov', '~> 0'
   s.add_development_dependency 'sqlite3', '~> 1.3'
 end

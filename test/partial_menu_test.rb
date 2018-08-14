@@ -1,39 +1,102 @@
 require 'test_helper'
 
 module PartialMenu
-  include PartialMenu::ViewHelpers
   class Test < ActionView::TestCase
+    setup do
+      @request.path = '/'
+      @request.assign_parameters nil, 'pages', 'index', {}, nil, nil
+    end
+
     test 'PartialMenu is loaded as module' do
       assert_kind_of Module, PartialMenu
     end
 
     test 'renders default menu when no options given' do
-      assert_equal '<ul>
-  <li>
-    <i class="fa fa-fw fa-user"></i>
-    <a href="root_path">First item</a>
-  </li>
-  <li>
-  </li>
-  <li class="nav-item" title="Third Item" data-original-title="Third Item">
-    <a class="nav-link nav-link-collapse collapsed"
-      data-toggle="collapse" href="#collapsemain_menu" data-parent="#main">
-      <span class="nav-link-text">Third Item</span>
-    </a>
-    <li>First Submenu</li>
-    <li>
-      <a href="second_path">menu.second_submenu.title</a>
-    </li>
-  </li>
-</ul>'.gsub(/[[:space:]]/, ''), partial_menu.gsub(/[[:space:]]/, '')
+      partial_menu
+      assert_select 'li[class=active]' do
+        assert_select 'i.fa, i.fa-fw'
+        assert_select 'a[href=?]', '/'
+        assert_select 'a', 'First item'
+      end
+      assert_select 'li>hr'
+      assert_select 'li[class=nav-item][title=?]', 'Third Item'
+      assert_select 'li[class=nav-item][data-original-title=?]', 'Third Item'
+      assert_select 'li[class=nav-item] > a' do
+        assert_select '[href=?]', '#collapsemain_menu'
+        assert_select '[data-parent=?]', '#main'
+        assert_select 'i.glyph, i.glyph-fw'
+        assert_select 'span', 'Third Item'
+      end
+      assert_select 'ul[id="#main"]' do
+        assert_select 'a[href=link]', 'First Submenu'
+        assert_select 'a[href=second_path]', 'menu.second_submenu.title'
+      end
     end
 
     test 'renders menu with specified layout' do
-      skip
+      partial_menu('side')
+      assert_select 'li[class=active]' do
+        assert_select 'i.fa, i.fa-fw'
+        assert_select 'a[href=?]', '/'
+        assert_select 'a', 'First item'
+      end
+      assert_select 'li>hr'
+      assert_select 'li[class=nav-item][title=?]', 'Third Item'
+      assert_select 'li[class=nav-item][data-original-title=?]', 'Third Item'
+      assert_select 'li[class=nav-item] > a' do
+        assert_select '[href=?]', '#collapseside_menu'
+        assert_select 'i.fa, i.fa-fw'
+        assert_select '[data-parent=?]', '#side'
+        assert_select 'span', 'Third Item'
+      end
+      assert_select 'ul[id="#side"]' do
+        assert_select 'a[href=link]', 'First Submenu'
+        assert_select 'a[href=second_path]', 'menu.second_submenu.title'
+      end
     end
 
-    test 'renders menu with options given' do
-      skip
+    test 'renders menu with type and options' do
+      partial_menu('side', menu_id: 'sidemenu_id')
+      assert_select 'li[class=active]' do
+        assert_select 'i.fa, i.fa-fw'
+        assert_select 'a[href=?]', '/'
+        assert_select 'a', 'First item'
+      end
+      assert_select 'li>hr'
+      assert_select 'li[class=nav-item][title=?]', 'Third Item'
+      assert_select 'li[class=nav-item][data-original-title=?]', 'Third Item'
+      assert_select 'li[class=nav-item] > a' do
+        assert_select '[href=?]', '#collapseside_menu'
+        assert_select 'i.fa, i.fa-fw'
+        assert_select '[data-parent=?]', '#side'
+        assert_select 'span', 'Third Item'
+      end
+      assert_select 'ul[id="#side"]' do
+        assert_select 'a[href=link]', 'First Submenu'
+        assert_select 'a[href=second_path]', 'menu.second_submenu.title'
+      end
+    end
+
+    test 'renders menu with options only' do
+      partial_menu(menu_id: 'mainmenu_id')
+      assert_select 'li[class=active]' do
+        assert_select 'i.fa, i.fa-fw'
+        assert_select 'a[href=?]', '/'
+        assert_select 'a', 'First item'
+      end
+      assert_select 'li>hr'
+      assert_select 'li[class=nav-item][title=?]', 'Third Item'
+      assert_select 'li[class=nav-item][data-original-title=?]', 'Third Item'
+      assert_select 'li[class=nav-item] > a' do
+        assert_select '[href=?]', '#collapsemain_menu'
+        assert_select '[data-parent=?]', '#main'
+        assert_select 'i.glyph, i.glyph-fw'
+        assert_select 'span', 'Third Item'
+      end
+      assert_select 'ul[id="#main"]' do
+        assert_select 'a[href=link]', 'First Submenu'
+        assert_select 'a[href=second_path]', 'menu.second_submenu.title'
+      end
     end
   end
 end

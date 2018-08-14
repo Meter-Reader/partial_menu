@@ -1,8 +1,18 @@
+unless ENV['DEBUG']
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/dummy/'
+  end
+end
+
+require 'minitest/byebug' if ENV['DEBUG']
+
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
-require 'minitest/byebug' if ENV['DEBUG']
 require_relative '../test/dummy/config/environment'
+require 'partial_menu/view_helpers'
+
 ActiveRecord::Migrator.migrations_paths = [
   File.expand_path('../test/dummy/db/migrate', __dir__)
 ]
@@ -25,4 +35,10 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.file_fixture_path =
     ActiveSupport::TestCase.fixture_path + '/files'
   ActiveSupport::TestCase.fixtures :all
+end
+
+module ActiveSupport
+  class TestCase
+    include PartialMenu::ViewHelpers
+  end
 end

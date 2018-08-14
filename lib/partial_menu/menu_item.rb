@@ -11,6 +11,7 @@ module PartialMenu
     attr_reader :title
     attr_reader :submenu
     attr_reader :id
+    attr_reader :options
 
     ##
     # Contructor which check parameter types and start setup
@@ -74,7 +75,7 @@ module PartialMenu
       return unless @props.key?(:menu)
       @submenu = PartialMenu::Menu.new(
         @props[:menu],
-        @parent.type,
+        @parent.layout,
         self
       )
     end

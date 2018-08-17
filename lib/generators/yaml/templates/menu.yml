@@ -2,7 +2,7 @@
 menu:
   - first_item:
     title: "First item"
-    uri: root_path
+    uri: root
     icon: test
   - second_item: separator
   - third_item:
@@ -11,4 +11,4 @@ menu:
     - first_submenu: link
     - second_submenu:
       title: menu.second_submenu.title
-      uri: second_path
+      uri: second

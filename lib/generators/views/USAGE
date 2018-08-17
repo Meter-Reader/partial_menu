@@ -8,6 +8,7 @@ Examples:
     This will create:
         app/views/main_menu/_mneu.html.erb         -- menu root template
         app/views/main_menu/_item.html.erb         -- menu items template
+        app/views/main_menu/_separator.html.erb    -- separator template
         app/views/main_menu/_submenu_item.html.erb -- submenu root template
         app/views/main_menu/_item.html.erb         -- submenu items template
 
@@ -16,5 +17,6 @@ Examples:
     This will create:
         app/views/side_menu/_menu.html.erb         -- menu root template
         app/views/side_menu/_item.html.erb         -- menu items template
+        app/views/side_menu/_separator.html.erb    -- separator template
         app/views/side_menu/_submenu_item.html.erb -- submenu root template
         app/views/side_menu/_item.html.erb         -- submenu items template

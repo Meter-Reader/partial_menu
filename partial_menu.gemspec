@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ['peter@meter-reader.com']
   s.homepage = 'https://bitbucket.org/meterreader/partial_menu'
   s.summary = 'Navigation menu builder based on Rails partial views.'
-  s.description = "Generating hierarchical meus in Rails should utilize Rails'
+  s.description = "Generating hierarchical menus in Rails should utilize Rails'
   built-in partial views instead of using some kind on HTML code generators.
   This gem just do that."
   s.license = 'MIT'

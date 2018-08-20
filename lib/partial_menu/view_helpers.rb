@@ -48,7 +48,12 @@ module PartialMenu
         options = type
         type = 'main'
       end
-      options[:menu] = PartialMenu::Menu.new(load_menu_from_yaml(type), type)
+      options[:menu] = PartialMenu::Menu.new(
+        load_menu_from_yaml(
+          get_yaml_prefix(type, options)
+        ),
+        type
+      )
       options.deep_symbolize_keys!
       render partial: "#{type}_menu/menu", locals: options
     end
@@ -56,23 +61,27 @@ module PartialMenu
 
     private
 
+    def get_yaml_prefix(prefix, options)
+      options[:yaml] || prefix
+    end
+
     ##
     # Load yaml file from config
     #
     # The +type+ parameter is used to create te actual file name. It is
     # expected to:
     # * be in the Rails apps config/ folder
-    # * have a name like +type>_menu.yml+
+    # * have a name like +<prefix>_menu.yml+
     #
     # All keys are symbolized after loading hte file.
     #
-    # @param [String] type The menu type, which identifies the file too
+    # @param [String] type The yaml file's name prefix
     #
     # @return [Hash] The parsed YAML as hash of objects
     #
-    def load_menu_from_yaml(type)
+    def load_menu_from_yaml(prefix)
       Psych.load_file(
-        Rails.root.join("config/#{type}_menu.yml")
+        Rails.root.join("config/#{prefix}_menu.yml")
       ).deep_symbolize_keys[:menu]
     end
   end

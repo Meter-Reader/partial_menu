@@ -57,7 +57,7 @@ module PartialMenu
     # @retrun [boolean]
     #
     def active?(view)
-      view.current_page? @uri
+      view.current_page? view.url_for @uri
     end
 
     private

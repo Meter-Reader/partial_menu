@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    partial_menu (1.1.0)
-      active_link_to (~> 1.0)
+    partial_menu (1.2.0)
       rails (~> 5.2)
 
 GEM
@@ -31,9 +30,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_link_to (1.0.5)
-      actionpack
-      addressable
     activejob (5.2.0)
       activesupport (= 5.2.0)
       globalid (>= 0.3.6)
@@ -52,8 +48,6 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
-      public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
     builder (3.2.3)
@@ -103,7 +97,6 @@ GEM
     parser (2.5.1.2)
       ast (~> 2.4.0)
     powerpack (0.1.2)
-    public_suffix (3.0.2)
     rack (2.0.5)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)

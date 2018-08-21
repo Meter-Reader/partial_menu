@@ -1,5 +1,5 @@
 <li class="nav-item" title="<%= menu.parent.title %>" data-original-title="<%= menu.parent.title %>">
-  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="<%= 'collapse' unless menu.active?(self)%>"
     href="#collapse<%= menu.id %>"  data-parent="#<%= menu.layout %>">
     <% if menu.parent.try(:icon).present? %>
       <i class="<%= menu.parent.try(:icontype) || 'fa'%> <%= menu.parent.try(:icontype) || 'fa'%>-fw <%= menu.parent.icon %>"></i>

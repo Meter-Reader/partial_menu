@@ -1,9 +1,7 @@
-require 'active_link_to'
-
 module PartialMenu
   # Represents menu item in a menu
   class MenuItem
-    include ActiveLinkTo
+    include ActionView::Helpers::UrlHelper
 
     attr_reader :type
     attr_reader :parent
@@ -45,10 +43,21 @@ module PartialMenu
     ##
     # True if menu item is a separator
     #
-    # @ return [boolean]
+    # @return [boolean]
     #
     def separator?
       @type == :separator
+    end
+
+    ##
+    # True if current url relates to the menu item's uri
+    #
+    # @params [ActionView] Needs view context to get current request details
+    #
+    # @retrun [boolean]
+    #
+    def active?(view)
+      view.current_page? @uri
     end
 
     private

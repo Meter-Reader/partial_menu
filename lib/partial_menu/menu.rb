@@ -28,6 +28,20 @@ module PartialMenu
     end
     # rubocop:enable Metrics/MethodLength
 
+    ##
+    # True if current url relates to any child menu item's uri
+    #
+    # @params [ActionView] Needs view context to get current request details
+    #
+    # @retrun [boolean]
+    #
+    def active?(view)
+      @items.each do |item|
+        return true if item.active?(view)
+      end
+      false
+    end
+
     private
 
     def add_items(items)

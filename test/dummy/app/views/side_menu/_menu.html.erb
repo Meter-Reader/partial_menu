@@ -1,4 +1,4 @@
-<ul>
+<ul class="<%= 'active' if menu.active?(self) %>">
   <% menu.items.each do |item| -%>
     <% if item.submenu? -%>
       <%= render "#{menu.layout}_menu/submenu", menu: item.submenu -%>

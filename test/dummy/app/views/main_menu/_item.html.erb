@@ -1,4 +1,4 @@
-<li class="<%= 'active' if is_active_link?(url_for(item.uri), :inclusive) %>">
+<li class="<%= 'active' if item.active?(self) %>">
   <% if item.try(:icon).present? -%>
     <i class="<%= item.try(:icontype) || 'fa' %> <%= item.try(:icontype) || 'fa'%>-fw <%= item.icon %>"></i>
   <% end -%>

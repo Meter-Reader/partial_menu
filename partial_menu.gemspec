@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
     'README.md'
   ]
 
-  s.add_dependency 'active_link_to', '~> 1.0'
   s.add_dependency 'rails', '~> 5.2'
 
   s.add_development_dependency 'bundler-audit', '~> 0.6'

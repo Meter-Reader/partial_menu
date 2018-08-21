@@ -13,6 +13,7 @@ module PartialMenu
 
     test 'renders default menu when no options given' do
       partial_menu
+      assert_select 'ul[class=active]', 1
       assert_select 'li[class=active]' do
         assert_select 'i.fa, i.fa-fw'
         assert_select 'a[href=?]', '/'
@@ -35,6 +36,7 @@ module PartialMenu
 
     test 'renders menu with specified layout' do
       partial_menu('side')
+      assert_select 'ul[class=active]', 1
       assert_select 'li[class=active]' do
         assert_select 'i.fa, i.fa-fw'
         assert_select 'a[href=?]', '/'

@@ -9,6 +9,7 @@ module PartialMenu
 
     test 'renders menu with type and options' do
       partial_menu('side', menu_id: 'sidemenu_id')
+      assert_select 'ul[class=active]', 1
       assert_select 'li[class=active]' do
         assert_select 'i.fa, i.fa-fw'
         assert_select 'a[href=?]', '/'
@@ -31,6 +32,7 @@ module PartialMenu
 
     test 'renders menu with options only' do
       partial_menu(menu_id: 'mainmenu_id')
+      assert_select 'ul[class=active]', 1
       assert_select 'li[class=active]' do
         assert_select 'i.fa, i.fa-fw'
         assert_select 'a[href=?]', '/'
@@ -53,6 +55,7 @@ module PartialMenu
 
     test 'renders menu with options defining yaml' do
       partial_menu(yaml: 'side')
+      assert_select 'ul[class=active]', 1
       assert_select 'li[class=active]' do
         assert_select 'i.fa, i.fa-fw'
         assert_select 'a[href=?]', '/'

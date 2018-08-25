@@ -18,6 +18,8 @@ require 'bundler/gem_tasks'
 
 require 'rake/testtask'
 
+require 'ci/reporter/rake/minitest'
+
 Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
@@ -26,3 +28,5 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task default: :test
+
+task test: 'ci:setup:minitest'

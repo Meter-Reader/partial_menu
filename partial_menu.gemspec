@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 5.2'
 
   s.add_development_dependency 'bundler-audit', '~> 0.6'
+  s.add_development_dependency 'ci_reporter_minitest', '~> 1.0'
   s.add_development_dependency 'minitest-byebug', '~> 0'
   s.add_development_dependency 'overcommit', '~> 0.45'
   s.add_development_dependency 'rails_best_practices', '~> 1.19'

@@ -2,7 +2,6 @@ unless ENV['DEBUG']
   require 'simplecov'
   SimpleCov.start do
     add_filter '/dummy/'
-    coverage_dir 'test-reports'
   end
 end
 

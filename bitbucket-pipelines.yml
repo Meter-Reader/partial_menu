@@ -14,7 +14,15 @@ pipelines:
           - ruby -v
           - bundle install
           - rake
-
+  branches:
+    live:
+      - step:
+          name: Push to ruby-gems.org
+          deployment: production
+          script:
+            - rm -f partial_menu-*.gem
+            - gem build partial_menu
+            - gem push partial_menu-*.gem
 definitions:
   caches:
     bundler: ./vendor

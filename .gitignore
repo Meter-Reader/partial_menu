@@ -11,3 +11,4 @@ test/dummy/tmp/
 .byebug_history
 test/reports/
 rdoc/
+coverage/

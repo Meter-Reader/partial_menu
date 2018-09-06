@@ -1,5 +1,7 @@
 unless ENV['DEBUG']
   require 'simplecov'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
   SimpleCov.start do
     add_filter '/dummy/'
   end

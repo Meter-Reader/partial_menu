@@ -20,6 +20,10 @@ pipelines:
           name: Push to ruby-gems.org
           deployment: production
           script:
+            - ruby -v
+            - bundle install
+            - rake
+            - rake rdoc
             - rm -f partial_menu-*.gem
             - gem build partial_menu
             - gem push partial_menu-*.gem

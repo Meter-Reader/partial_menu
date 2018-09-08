@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/partial_menu.svg)](https://badge.fury.io/rb/partial_menu)
+
 # PartialMenu
 Generating hierarchical menus in Rails should utilize Rails' built-in partial views instead of using some kind on HTML code generators. This gem just do that.
 

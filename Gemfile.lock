@@ -86,7 +86,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mimemagic (0.3.2)
@@ -99,7 +99,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    overcommit (0.45.0)
+    overcommit (0.46.0)
       childprocess (~> 0.6, >= 0.6.3)
       iniparse (~> 1.4)
     parallel (1.12.1)
@@ -144,7 +144,7 @@ GEM
     rainbow (3.0.0)
     rake (12.3.1)
     require_all (2.0.0)
-    rubocop (0.58.2)
+    rubocop (0.59.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
@@ -183,7 +183,7 @@ PLATFORMS
 DEPENDENCIES
   bundler-audit (~> 0.6)
   ci_reporter_minitest (~> 1.0)
-  codecov
+  codecov (~> 0.1)
   minitest-byebug (~> 0)
   overcommit (~> 0.45)
   partial_menu!

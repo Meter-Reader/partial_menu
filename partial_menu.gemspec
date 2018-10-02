@@ -34,5 +34,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 0.58'
   s.add_development_dependency 'simplecov', '~> 0'
   s.add_development_dependency 'sqlite3', '~> 1.3'
+
+  s.metadata = {
+    'bug_tracker_uri'   => 'https://bitbucket.org/meterreader/partial_menu/issues',
+    'documentation_uri' => 'https://www.rubydoc.info/gems/partial_menu/',
+    'homepage_uri'      => 'https://bitbucket.org/meterreader/partial_menu/',
+    'source_code_uri'   => 'https://bitbucket.org/meterreader/partial_menu/src'
+  }
 end
 # rubocop:enable Metrics/BlockLength

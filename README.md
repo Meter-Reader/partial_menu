@@ -36,7 +36,7 @@ menu:                                   # Marks the beginnin of the menu
       uri: second
 
 ```
-Now about the views:
+Customizing views:
 
 ```bash
     rails generate partial_menu:views -d side
@@ -64,9 +64,6 @@ Or install it yourself as:
 ```bash
 $ gem install partial_menu
 ```
-
-## Contributing
-Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

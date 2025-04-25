@@ -8,7 +8,7 @@ menu:
   - third_item:
     icontype: glyph
     menu:
-    - first_submenu: link
-    - second_submenu:
-      title: menu.second_submenu.title
-      uri: second
+      - first_submenu: link
+      - second_submenu:
+        title: menu.second_submenu.title
+        uri: second

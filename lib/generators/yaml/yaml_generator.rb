@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PartialMenu
   # Generates example menu.yml file in config/
   class YamlGenerator < Rails::Generators::Base

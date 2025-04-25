@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'partial_menu/version'
 
 # PartailMenu implementation class

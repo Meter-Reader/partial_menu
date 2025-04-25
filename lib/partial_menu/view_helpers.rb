@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'partial_menu/menu'
 
 module PartialMenu
@@ -41,9 +43,8 @@ module PartialMenu
       unless (type.is_a? String) || (type.is_a? Hash)
         raise ::ArgumentError, "Expected a String or Hash, got #{type.class}"
       end
-      unless options.is_a? Hash
-        raise ::ArgumentError, "Expected a Hash, got #{options.class}"
-      end
+      raise ::ArgumentError, "Expected a Hash, got #{options.class}" unless options.is_a? Hash
+
       if type.is_a? Hash
         options = type
         type = 'main'

@@ -1,15 +1,11 @@
+# frozen_string_literal: true
+
 module PartialMenu
   # Represents menu item in a menu
   class MenuItem
     include ActionView::Helpers::UrlHelper
 
-    attr_reader :type
-    attr_reader :parent
-    attr_reader :uri
-    attr_reader :title
-    attr_reader :submenu
-    attr_reader :id
-    attr_reader :options
+    attr_reader :type, :parent, :uri, :title, :submenu, :id, :options
 
     ##
     # Contructor which check parameter types and start setup
@@ -20,12 +16,9 @@ module PartialMenu
     # Throws ArgumentError if parameters are not expected type
     #
     def initialize(props, parent)
-      unless props.is_a? Hash
-        raise ::ArgumentError, "Expected Hash, got #{prop.class}"
-      end
-      unless parent.is_a? PartialMenu::Menu
-        raise ::ArgumentError, "Expected PartialMenu::Menu, got #{parent.class}"
-      end
+      raise ::ArgumentError, "Expected Hash, got #{prop.class}" unless props.is_a? Hash
+      raise ::ArgumentError, "Expected PartialMenu::Menu, got #{parent.class}" unless parent.is_a? PartialMenu::Menu
+
       @parent = parent
       @props = props
       setup
@@ -82,6 +75,7 @@ module PartialMenu
     def set_submenu
       @submenu = nil
       return unless @props.key?(:menu)
+
       @submenu = PartialMenu::Menu.new(
         @props[:menu],
         @parent.layout,
@@ -115,6 +109,7 @@ module PartialMenu
     def set_title
       @title = ''
       return if @type == :separator
+
       @title = @props[:title] if @props.key?(:title)
       @title = @id.titleize if @title.blank?
     end
@@ -148,7 +143,7 @@ module PartialMenu
     #
     def set_other_attr
       @props.except(:id, :uri, :title, :menu).each do |name, value|
-        instance_variable_set('@' + name.to_s, value)
+        instance_variable_set("@#{name}", value)
         define_singleton_method(name) { instance_variable_get("@#{name}") }
       end
     end

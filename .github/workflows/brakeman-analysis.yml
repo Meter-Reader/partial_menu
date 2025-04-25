@@ -1,0 +1,46 @@
+---
+name: Brakeman Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
+  schedule:
+    - cron: '36 11 * * 5'
+
+jobs:
+  brakeman-scan:
+    name: Brakeman Scan
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.4']
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@main
+
+      # Customize the ruby version depending on your needs
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Setup Brakeman
+        run: |
+          gem install brakeman
+
+      - name: Scan
+        continue-on-error: true
+        run: |
+          brakeman -f sarif -o output.sarif.json .
+
+      # Upload the SARIF file generated in the previous step
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: output.sarif.json

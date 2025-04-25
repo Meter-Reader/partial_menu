@@ -12,3 +12,5 @@ test/dummy/tmp/
 test/reports/
 rdoc/
 coverage/
+codecov
+codecov.yml

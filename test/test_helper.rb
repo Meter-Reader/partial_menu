@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-unless ENV['DEBUG']
+if ENV['CI']
   require 'simplecov'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  require 'simplecov-cobertura'
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
   SimpleCov.start do
     add_filter '/dummy/'
   end
